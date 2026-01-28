@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>AR проєкт учня</title>
+
+  <!-- Model Viewer -->
+  <script type="module"
+    src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js">
+  </script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      background: #ffffff;
+    }
+
+    button {
+      padding: 8px 12px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    model-viewer {
+      width: 100%;
+      height: 85vh;
+    }
+
+    /* Вікно з інформацією */
+    .info-box {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+    }
+
+    .info-content {
+      background: #fff;
+      max-width: 400px;
+      margin: 100px auto;
+      padding: 20px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <strong>3D-проєкт</strong>
+  <button onclick="openInfo()">ℹ Інформація</button>
+</header>
+
+<model-viewer
+  src="cube.glb"
+  ar
+  ar-modes="scene-viewer quick-look webxr"
+  camera-controls
+  auto-rotate>
+</model-viewer>
+
+<!-- Вікно з інформацією -->
+<div class="info-box" id="infoBox">
+  <div class="info-content">
+    <h2>Назва проєкту</h2>
+    <p><strong>Автор:</strong> Ім’я Прізвище</p>
+    <p><strong>Клас:</strong> 8-А</p>
+    <p><strong>Опис:</strong><br>
+      Цей 3D-об’єкт створений у Blender для навчального проєкту.
+    </p>
+    <button onclick="closeInfo()">Закрити</button>
+  </div>
+</div>
+
+<script>
+  function openInfo() {
+    document.getElementById("infoBox").style.display = "block";
+  }
+  function closeInfo() {
+    document.getElementById("infoBox").style.display = "none";
+  }
+</script>
+
+</body>
+</html>
